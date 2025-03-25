@@ -68,7 +68,7 @@ export default function Home() {
     );
   }
 
-  const hoverVariants = {
+  const hoverVariants: { [key: string]: { backgroundColor: string; scale: number } } = {
     framework: { backgroundColor: '#f87171', scale: 1.1 },
     'voice-tone': { backgroundColor: '#60a5fa', scale: 1.1 },
     logo: { backgroundColor: '#34d399', scale: 1.1 },
@@ -100,7 +100,7 @@ export default function Home() {
       {['Framework', 'Voice-tone', 'Logo', 'Typography', 'Iconology', 'Color', 'Imagery', 'Motion'].map((section, index) => (
         <motion.div
           key={index}
-          whileHover={hoverVariants[section.toLowerCase().replace(/\s+/g, '')]}
+          whileHover={hoverVariants[section.toLowerCase().replace(/\s+/g, '') as keyof typeof hoverVariants]}
           whileTap={{ scale: 0.95 }}
           onClick={() => handleRouteChange(section)}
           className={`${gridStyles[index]} flex items-center justify-center bg-white shadow-md cursor-pointer text-xl font-semibold text-gray-800`}
